@@ -19,5 +19,4 @@ namespace CoffeeProductionChart
             return value;
         }
     }
-
 }

@@ -9,6 +9,7 @@
         <local:WorldCoffeeProduction x:Name="coffeeProduction"/>
     </ContentPage.BindingContext>
     <ContentPage.Resources>
+        <local:DataLabelConverter x:Key="dataLabel" />
         <local:CornerRadiusConverter x:Key="innerRadiusConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
