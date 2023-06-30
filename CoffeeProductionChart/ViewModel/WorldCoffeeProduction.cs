@@ -8,6 +8,7 @@ namespace CoffeeProductionChart
     {
         List<CoffeeProductionModel> productionDetails;
         public List<Brush> PaletteBrushes { get; set; }
+        public List<Brush> SelectionBrushes { get; set; }
 
         public List<CoffeeProductionModel> ProductionDetails
         {
@@ -19,6 +20,22 @@ namespace CoffeeProductionChart
             {
                 productionDetails = value;
                 NotifyPropertyChanged(nameof(ProductionDetails));
+            }
+        }
+
+
+        private Brush textColor;
+        public Brush SelectionBrush
+        {
+            get
+            {
+                return textColor;
+            }
+            set
+            {
+                textColor = value;
+
+                NotifyPropertyChanged(nameof(SelectionBrush));
             }
         }
 
@@ -75,6 +92,7 @@ namespace CoffeeProductionChart
             set
             {
                 selectedIndex = value;
+                SelectionBrush = SelectionBrushes[SelectedIndex];
                 UpdateIndex(value);
                 NotifyPropertyChanged(nameof(SelectedIndex));
             }
@@ -90,14 +108,26 @@ namespace CoffeeProductionChart
         public WorldCoffeeProduction()
         {
             ProductionDetails = new List<CoffeeProductionModel>(ReadCSV());
+
             PaletteBrushes = new List<Brush>
             {
-                new SolidColorBrush(Color.FromArgb("#02daf7")),
-                new SolidColorBrush(Color.FromArgb("#8ebf24")),
-                new SolidColorBrush(Color.FromArgb("#60789b")),
-                new SolidColorBrush(Color.FromArgb("#E14A4A")),
-                new SolidColorBrush(Color.FromArgb("#f48945")),
-                new SolidColorBrush(Color.FromArgb("#91979E"))
+                new SolidColorBrush(Color.FromArgb("#5bdffc")),
+                new SolidColorBrush(Color.FromArgb("#2fe0d0")),
+                new SolidColorBrush(Color.FromArgb("#baf74d")),
+                new SolidColorBrush(Color.FromArgb("#f5d949")),
+                new SolidColorBrush(Color.FromArgb("#f2464d")),
+                new SolidColorBrush(Color.FromArgb("#c86af7"))
+            };
+
+            SelectionBrushes = new List<Brush>
+            {
+                new SolidColorBrush(Color.FromArgb("#00b1d9")),
+                new SolidColorBrush(Color.FromArgb("#05b3a2")),
+
+                new SolidColorBrush(Color.FromArgb("#8ccf15")),
+                new SolidColorBrush(Color.FromArgb("#d9b709")),
+                new SolidColorBrush(Color.FromArgb("#d40b13")),
+                new SolidColorBrush(Color.FromArgb("#9e07e3"))
             };
         }
 

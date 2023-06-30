@@ -9,74 +9,83 @@
         <local:WorldCoffeeProduction x:Name="coffeeProduction"/>
     </ContentPage.BindingContext>
     <ContentPage.Resources>
+        <local:LegendItem x:Key="legend" />
         <local:CornerRadiusConverter x:Key="innerRadiusConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Border Stroke="LightGray" Margin="10,30,10,10" Padding="10" StrokeThickness="1">
+        <Border Stroke="LightGray"  Margin="{OnPlatform WinUI='100,40,150,40',Default='10'}"  StrokeThickness="1">
             <Border.StrokeShape>
-                <RoundRectangle CornerRadius="30" />
+                <RoundRectangle CornerRadius="10" />
             </Border.StrokeShape>
             <chart:SfCircularChart >
                 <chart:SfCircularChart.Title>
-                    <Grid>
-                        <Border Padding="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-                                BackgroundColor="#563006">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10"  />
-                            </Border.StrokeShape>
-                            <Label TextColor="White" Text="The World’s Top Coffee Producing Countries" 
-                               FontAttributes="Bold" FontSize="20"
-                               HorizontalOptions="CenterAndExpand"  />
-                        </Border>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="34"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.RowSpan="2"  Margin="3,8,0,6" Orientation="Vertical"
+                     BackgroundColor="#804708" >
+                            <Path Fill="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                                  TranslationX="0.5" ScaleY="1.1" TranslationY="0.5" Data="M19.033094,24.554602L18.945375,24.725663C18.04797,26.319818 15.337325,27.416999 11.950003,27.416999 8.5618632,27.416999 5.8504002,26.319818 4.9527161,24.725663L4.8807955,24.585451 4.767566,24.626094C2.8604491,25.32885 1.9999998,26.196404 2.0000001,26.773913 1.9999998,28.101935 5.8959999,30.031968 12,30.031968 18.104,30.031968 22,28.101935 22,26.773913 22,26.195465 21.138672,25.326975 19.224853,24.623281z M4.0630004,14.226999L4.0109985,15.855997C4.0109982,18.458001 4.780988,20.458001 6.2969811,21.799995 6.5119779,21.988991 6.6349943,22.262001 6.6349943,22.548988L6.6349943,23.549995C6.6349943,24.208 8.653002,25.417 11.950003,25.417 15.245997,25.417 17.262997,24.208 17.262997,23.549995L17.262997,22.548988C17.262997,22.262001 17.386014,21.988991 17.601011,21.799995 18.738762,20.7935 19.455751,19.416876 19.743137,17.693749L19.763206,17.564347 19.758993,17.481C19.758993,17.157375,19.787742,16.841296,19.842474,16.535934L19.876518,16.367511 19.877987,16.336804C19.883989,16.178895,19.886993,16.018622,19.886993,15.855997L19.886993,14.279001z M14.616277,6.6757202E-06C14.632907,-8.2969666E-05 14.649683,0.00072574615 14.666556,0.0024757385 14.942534,0.022475243 15.149517,0.26246643 15.128519,0.53745651L15.025527,1.9304056C14.914536,3.4253511,14.274588,4.9552951,13.355664,5.9232597L11.424822,7.9581857C10.291321,9.1151748,10.121486,11.249301,10.1019,12.142399L10.100493,12.227 13.921638,12.227 13.928682,12.127211C13.987097,11.378923,14.20033,10.198988,14.934648,9.4488695L16.097608,8.2248297C16.524594,7.775815,16.834583,7.0207901,16.887582,6.3037667L16.949579,5.462739C16.970579,5.1867299 17.216571,4.9777231 17.485561,5.0007238 17.761552,5.0217247 17.968545,5.2607327 17.947546,5.5367417L17.885547,6.377769C17.81455,7.3248,17.407564,8.2968318,16.822584,8.9138525L15.654624,10.143893C15.187139,10.621033,14.999931,11.450787,14.935727,12.084618L14.923342,12.227 19.834991,12.227C20.647907,12.226999,21.352325,12.702272,21.684257,13.389934L21.723118,13.475729 21.735502,13.466633C22.355739,13.03485 23.083437,12.785996 23.861002,12.785996 26.123008,12.785996 27.963012,14.891998 27.963012,17.481 27.963012,20.069002 26.123008,22.175004 23.861002,22.175004 23.308,22.175004 22.861,21.727003 22.861,21.175003 22.861,20.623002 23.308,20.175002 23.861002,20.175002 25.020006,20.175002 25.963007,18.967001 25.963007,17.481 25.963007,15.994999 25.020006,14.785998 23.861002,14.785997 22.955532,14.785998 22.181896,15.523913 21.88676,16.555332L21.865143,16.637073 21.863209,16.676694C21.729286,18.951248,21.031666,20.888352,19.815721,22.372836L19.591511,22.632669 19.727821,22.679109C22.486236,23.648098 24,25.096978 24,26.773913 24,30.18897 17.817,32.032001 12,32.032001 6.1829998,32.032001 -2.3841858E-07,30.18897 0,26.773913 -2.3841858E-07,25.098916 1.5109471,23.651973 4.2637339,22.682195L4.3293769,22.659763 4.3224025,22.652432C2.8072641,20.966475,2.0109958,18.637554,2.0109959,15.855997L2.0109959,14.279001C2.0109958,13.146997,2.9319869,12.226999,4.0630004,12.227L9.0993931,12.227 9.0994842,12.20743C9.1093986,11.236683,9.2808726,8.7177205,10.705881,7.2642112L12.630723,5.2352848C13.385661,4.4393139,13.934616,3.1123629,14.027609,1.8554087L14.130601,0.46345901C14.150286,0.20471859,14.366831,0.0013465881,14.616277,6.6757202E-06z"></Path>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Margin="5,0,0,0" HorizontalOptions="Start" 
+                                Orientation="Vertical" >
+                            <Label  Text="The World’s Top Coffee Producing Countries" FontSize="25" FontAttributes="Bold" 
+                                  TextColor="Black"/>
+                            <Label Text="Coffee production in 2021 was measured in 60-kg bags." FontSize="18" 
+                                   TextColor="Gray"/>
+                        </StackLayout>
                     </Grid>
                 </chart:SfCircularChart.Title>
                 <chart:SfCircularChart.Legend>
-                    <chart:ChartLegend  >
+                    <chart:ChartLegend x:Name="chartLegend"  Placement="Right" >
+                        <chart:ChartLegend.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout WidthRequest="{OnPlatform WinUI='150', Android='90',iOS='90',MacCatalyst='140'}" 
+                                             Margin="0,0,80,0" Orientation="Horizontal">
+                                    <Ellipse WidthRequest="15" HeightRequest="15" Fill="{Binding IconBrush}"
+                                             HorizontalOptions="Center" VerticalOptions="Center" />
+                                    <Label FontSize="{OnPlatform WinUI='15' ,Android='13',MacCatalyst='15',iOS='13'}" 
+                                       Margin="5,0,0,0" FontAttributes="Bold"
+                                       Text="{Binding Item,Converter={StaticResource legend}}" 
+                                        VerticalTextAlignment="Start"  HorizontalTextAlignment="Start" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </chart:ChartLegend.ItemTemplate>
                     </chart:ChartLegend>
                 </chart:SfCircularChart.Legend>
-                <chart:DoughnutSeries ShowDataLabels="True" x:Name="series" StartAngle="0" EndAngle="360"
-                                      ExplodeRadius="10" PaletteBrushes="{Binding PaletteBrushes}"
+                <chart:DoughnutSeries ShowDataLabels="True" x:Name="series" StartAngle="270" EndAngle="630"
+                                      PaletteBrushes="{Binding PaletteBrushes}" Radius="0.7"
                                       ItemsSource="{Binding ProductionDetails}" GroupTo="{Binding GroupTo}"
                                       XBindingPath="Country" Stroke="white" StrokeWidth="1"
-                                      YBindingPath="Production">
+                                      YBindingPath="Production" LegendIcon="Circle">
                     <chart:DoughnutSeries.CenterView>
-                        <Border x:Name="border" HeightRequest="{Binding CenterHoleSize,Converter={StaticResource innerRadiusConverter},Source={x:Reference series}}" 
-                                WidthRequest="{Binding CenterHoleSize,Converter={StaticResource innerRadiusConverter},Source={x:Reference series}}"
-                              Stroke="Transparent" >
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="{Binding CenterHoleSize}"/>
-                            </Border.StrokeShape>
-
-                            <StackLayout Orientation="Vertical">
-                                <Label  FontSize="{OnPlatform WinUI='14',iOS='12',MacCatalyst='14',Android='12'}" 
-                                        FontAttributes="Bold" Text="{Binding Country,Source={x:Reference coffeeProduction}}"
-                                        HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="EndAndExpand" TextColor="Black" />
-                                <Label FontSize="{OnPlatform WinUI='14',iOS='12',MacCatalyst='14',Android='12'}"
-                                       Margin="{OnPlatform WinUI='4',MacCatalyst='3',iOS='2',Android='2'}" FontAttributes="Bold" 
-                                       Text="{Binding Production,Source={x:Reference coffeeProduction},StringFormat='{0:F1}M'}" 
-                                       HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="CenterAndExpand"  TextColor="Black" />
-                                <Label  FontSize="{OnPlatform WinUI='14',iOS='12',MacCatalyst='14',Android='12'}"
-                                        FontAttributes="Bold"
-                                        Text="{Binding Percentage,Source={x:Reference coffeeProduction},StringFormat='{0:P0}'}"
-                                        HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="StartAndExpand"  Margin="{OnPlatform WinUI='4',MacCatalyst='3',iOS='2',Android='2'}"
-                                        TextColor="Black"/>
-                            </StackLayout>
-                        </Border>
+                        <StackLayout x:Name="layout" HeightRequest="{Binding CenterHoleSize}" HorizontalOptions="Center" 
+                                     VerticalOptions="CenterAndExpand" WidthRequest="{Binding CenterHoleSize}">
+                            <Label Text="Profit of"   FontSize="{OnPlatform WinUI='13',Android='10',iOS='10',MacCatalyst='13'}" 
+                                   VerticalTextAlignment="Center" 
+                                   HorizontalOptions="Center" VerticalOptions="EndAndExpand"
+                                   Margin="{OnPlatform WinUI='0',Android='5',MacCatalyst='10',iOS='5'}"/>
+                            <Label Text="Coffee bags"   FontSize="{OnPlatform WinUI='13',Android='10',iOS='10',MacCatalyst='13'}"    HorizontalOptions="Center"
+                                   VerticalOptions="StartAndExpand" Margin="0"/>
+                            <Label  Text="{Binding Percentage,Source={x:Reference coffeeProduction},StringFormat='{0:P0}'}"
+                                    FontAttributes="Bold"   FontSize="{OnPlatform WinUI='15',Android='10',iOS='12',MacCatalyst='14'}"
+                                    HorizontalOptions="Center" VerticalOptions="StartAndExpand"
+                                    Margin="{OnPlatform Android='0',iOS='0',Default='0,-20,0,0'}"/>
+                        </StackLayout>
                     </chart:DoughnutSeries.CenterView>
                     <chart:DoughnutSeries.DataLabelSettings>
-                        <chart:CircularDataLabelSettings LabelPlacement="Inner" >
+                        <chart:CircularDataLabelSettings UseSeriesPalette="True" LabelPlacement="Outer"  >
                             <chart:CircularDataLabelSettings.LabelStyle>
-                                <chart:ChartDataLabelStyle FontSize="15" TextColor="Black"
+                                <chart:ChartDataLabelStyle  FontSize="11" TextColor="Black"
                                                            LabelFormat="###.#M" />
                             </chart:CircularDataLabelSettings.LabelStyle>
                         </chart:CircularDataLabelSettings>
                     </chart:DoughnutSeries.DataLabelSettings>
                     <chart:DoughnutSeries.SelectionBehavior>
-                        <chart:DataPointSelectionBehavior  SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}" 
-                                                           />
+                        <chart:DataPointSelectionBehavior SelectionBrush="{Binding SelectionBrush}" 
+                                                          SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}"  />
                     </chart:DoughnutSeries.SelectionBehavior>
                 </chart:DoughnutSeries>
             </chart:SfCircularChart>

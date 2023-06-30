@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using Microsoft.Maui.Controls.PlatformConfiguration;
+using System.Globalization;
 
 namespace CoffeeProductionChart
 {
@@ -8,7 +9,13 @@ namespace CoffeeProductionChart
         {
             if (value != null)
             {
+#if ANDROID || IOS
+
+                return new CornerRadius((double)value );
+#elif WINDOWS || MACCATALYST
                 return new CornerRadius((double)value / 2);
+
+#endif
             }
 
             return 0;
@@ -20,4 +27,29 @@ namespace CoffeeProductionChart
         }
     }
 
+    public class LegendItem : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+           if(value != null)
+            {
+                CoffeeProductionModel model = value as CoffeeProductionModel;
+                
+                if (model == null)
+                {
+                    return "Others";
+                }
+                else
+                {
+                    return model.Country.ToString();
+                }
+            }
+            return string.Empty;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
