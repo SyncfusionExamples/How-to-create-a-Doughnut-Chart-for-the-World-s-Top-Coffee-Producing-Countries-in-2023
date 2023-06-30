@@ -8,9 +8,7 @@ namespace CoffeeProductionChart
     {
         List<CoffeeProductionModel> productionDetails;
         public List<Brush> PaletteBrushes { get; set; }
-        public List<Brush> LightBrushes { get; set; }
         public List<Brush> SelectionBrushes { get; set; }
-        public List<Brush> SelectionBrushes1 { get; set; }
 
         public List<CoffeeProductionModel> ProductionDetails
         {
@@ -27,7 +25,7 @@ namespace CoffeeProductionChart
 
 
         private Brush textColor;
-        public Brush TextColor
+        public Brush SelectionBrush
         {
             get
             {
@@ -37,7 +35,7 @@ namespace CoffeeProductionChart
             {
                 textColor = value;
 
-                NotifyPropertyChanged(nameof(TextColor));
+                NotifyPropertyChanged(nameof(SelectionBrush));
             }
         }
 
@@ -94,7 +92,7 @@ namespace CoffeeProductionChart
             set
             {
                 selectedIndex = value;
-                TextColor = SelectionBrushes1[SelectedIndex];
+                SelectionBrush = SelectionBrushes[SelectedIndex];
                 UpdateIndex(value);
                 NotifyPropertyChanged(nameof(SelectedIndex));
             }
@@ -111,41 +109,17 @@ namespace CoffeeProductionChart
         {
             ProductionDetails = new List<CoffeeProductionModel>(ReadCSV());
 
-            LightBrushes = new List<Brush>
+            PaletteBrushes = new List<Brush>
             {
                 new SolidColorBrush(Color.FromArgb("#5bdffc")),
                 new SolidColorBrush(Color.FromArgb("#2fe0d0")),
-
                 new SolidColorBrush(Color.FromArgb("#baf74d")),
                 new SolidColorBrush(Color.FromArgb("#f5d949")),
                 new SolidColorBrush(Color.FromArgb("#f2464d")),
                 new SolidColorBrush(Color.FromArgb("#c86af7"))
             };
 
-            PaletteBrushes = new List<Brush>
-            {
-                new SolidColorBrush(Color.FromArgb("#02daf7")),
-                new SolidColorBrush(Color.FromArgb("#34f7db")),
-
-                new SolidColorBrush(Color.FromArgb("#cbf536")),
-                new SolidColorBrush(Color.FromArgb("#60789b")),
-                new SolidColorBrush(Color.FromArgb("#f55c31")),
-                new SolidColorBrush(Color.FromArgb("#91979E"))
-            };
-
-
             SelectionBrushes = new List<Brush>
-            {
-                new SolidColorBrush(Color.FromArgb("#02cef7")),
-                new SolidColorBrush(Color.FromArgb("#14917f")),
-
-                new SolidColorBrush(Color.FromArgb("#E14A4A")),
-                new SolidColorBrush(Color.FromArgb("#60709b")),
-                new SolidColorBrush(Color.FromArgb("#f27627")),
-                new SolidColorBrush(Color.FromArgb("#757980"))
-            };
-
-            SelectionBrushes1 = new List<Brush>
             {
                 new SolidColorBrush(Color.FromArgb("#00b1d9")),
                 new SolidColorBrush(Color.FromArgb("#05b3a2")),
@@ -155,8 +129,6 @@ namespace CoffeeProductionChart
                 new SolidColorBrush(Color.FromArgb("#d40b13")),
                 new SolidColorBrush(Color.FromArgb("#9e07e3"))
             };
-
-
         }
 
         public IEnumerable<CoffeeProductionModel> ReadCSV()

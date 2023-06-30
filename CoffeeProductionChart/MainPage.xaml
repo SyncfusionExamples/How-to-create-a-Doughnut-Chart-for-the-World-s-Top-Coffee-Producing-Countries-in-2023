@@ -42,10 +42,11 @@
                     <chart:ChartLegend x:Name="chartLegend"  Placement="Right" >
                         <chart:ChartLegend.ItemTemplate>
                             <DataTemplate>
-                                <StackLayout WidthRequest="{OnPlatform WinUI='150', Android='90',iOS='90',MacCatalyst='140'}" Margin="0,0,80,0" Orientation="Horizontal">
+                                <StackLayout WidthRequest="{OnPlatform WinUI='150', Android='90',iOS='90',MacCatalyst='140'}" 
+                                             Margin="0,0,80,0" Orientation="Horizontal">
                                     <Ellipse WidthRequest="15" HeightRequest="15" Fill="{Binding IconBrush}"
                                              HorizontalOptions="Center" VerticalOptions="Center" />
-                                    <Label FontSize="{OnPlatform WinUI='15' ,Android='10',MacCatalyst='13',iOS='10'}" 
+                                    <Label FontSize="{OnPlatform WinUI='15' ,Android='13',MacCatalyst='15',iOS='13'}" 
                                        Margin="5,0,0,0" FontAttributes="Bold"
                                        Text="{Binding Item,Converter={StaticResource legend}}" 
                                         VerticalTextAlignment="Start"  HorizontalTextAlignment="Start" />
@@ -55,20 +56,23 @@
                     </chart:ChartLegend>
                 </chart:SfCircularChart.Legend>
                 <chart:DoughnutSeries ShowDataLabels="True" x:Name="series" StartAngle="270" EndAngle="630"
-                                      PaletteBrushes="{Binding LightBrushes}" Radius="0.7"
+                                      PaletteBrushes="{Binding PaletteBrushes}" Radius="0.7"
                                       ItemsSource="{Binding ProductionDetails}" GroupTo="{Binding GroupTo}"
                                       XBindingPath="Country" Stroke="white" StrokeWidth="1"
                                       YBindingPath="Production" LegendIcon="Circle">
                     <chart:DoughnutSeries.CenterView>
                         <StackLayout x:Name="layout" HeightRequest="{Binding CenterHoleSize}" HorizontalOptions="Center" 
                                      VerticalOptions="CenterAndExpand" WidthRequest="{Binding CenterHoleSize}">
-                            <Label Text="Profit of"   FontSize="{OnPlatform WinUI='13',Android='9',iOS='9',MacCatalyst='13'}" VerticalTextAlignment="Center" 
-                                   HorizontalOptions="Center" VerticalOptions="EndAndExpand" Margin="{OnPlatform WinUI='0',Android='5',MacCatalyst='10',iOS='5'}"/>
-                            <Label Text="Coffee bags"   FontSize="{OnPlatform WinUI='13',Android='9',iOS='9',MacCatalyst='13'}"    HorizontalOptions="Center"
+                            <Label Text="Profit of"   FontSize="{OnPlatform WinUI='13',Android='10',iOS='10',MacCatalyst='13'}" 
+                                   VerticalTextAlignment="Center" 
+                                   HorizontalOptions="Center" VerticalOptions="EndAndExpand"
+                                   Margin="{OnPlatform WinUI='0',Android='5',MacCatalyst='10',iOS='5'}"/>
+                            <Label Text="Coffee bags"   FontSize="{OnPlatform WinUI='13',Android='10',iOS='10',MacCatalyst='13'}"    HorizontalOptions="Center"
                                    VerticalOptions="StartAndExpand" Margin="0"/>
-                            <Label  Text="{Binding Percentage,Source={x:Reference coffeeProduction},StringFormat='{0:P0}'}" FontAttributes="Bold"  
-                                    FontSize="{OnPlatform WinUI='15',Android='9',iOS='9',MacCatalyst='13'}"
-                                    HorizontalOptions="Center" VerticalOptions="StartAndExpand" Margin="{OnPlatform Android='0',iOS='0',Default='0,-20,0,0'}"/>
+                            <Label  Text="{Binding Percentage,Source={x:Reference coffeeProduction},StringFormat='{0:P0}'}"
+                                    FontAttributes="Bold"   FontSize="{OnPlatform WinUI='15',Android='10',iOS='12',MacCatalyst='14'}"
+                                    HorizontalOptions="Center" VerticalOptions="StartAndExpand"
+                                    Margin="{OnPlatform Android='0',iOS='0',Default='0,-20,0,0'}"/>
                         </StackLayout>
                     </chart:DoughnutSeries.CenterView>
                     <chart:DoughnutSeries.DataLabelSettings>
@@ -80,7 +84,8 @@
                         </chart:CircularDataLabelSettings>
                     </chart:DoughnutSeries.DataLabelSettings>
                     <chart:DoughnutSeries.SelectionBehavior>
-                        <chart:DataPointSelectionBehavior SelectionBrush="{Binding TextColor}" SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}"  />
+                        <chart:DataPointSelectionBehavior SelectionBrush="{Binding SelectionBrush}" 
+                                                          SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}"  />
                     </chart:DoughnutSeries.SelectionBehavior>
                 </chart:DoughnutSeries>
             </chart:SfCircularChart>
