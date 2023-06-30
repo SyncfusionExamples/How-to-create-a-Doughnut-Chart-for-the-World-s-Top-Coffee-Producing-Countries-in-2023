@@ -21,7 +21,7 @@
                 <chart:SfCircularChart.Title>
                     <Border Background="#443c8f"  StrokeThickness="1" Margin="0">
                         <VerticalStackLayout   >
-                            <Grid>
+                            <Grid Padding="4" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="34"/>
                                     <ColumnDefinition Width="*"/>
@@ -34,8 +34,6 @@
                                              HorizontalOptions="Start" Orientation="Vertical" >
                                     <Label  Text="The World’s Top Coffee Producing Countries" FontSize="22" FontAttributes="Bold" 
                                   TextColor="white"/>
-                                    <Label Text="Coffee production in 2021 was measured in 60-kg bags." FontSize="16" Padding="2"
-                                   TextColor="White"/>
                                 </StackLayout>
                             </Grid>
                         </VerticalStackLayout>
@@ -66,14 +64,14 @@
                     <chart:DoughnutSeries.CenterView>
                         <StackLayout x:Name="layout" HeightRequest="{Binding CenterHoleSize}" HorizontalOptions="Center" 
                                      VerticalOptions="CenterAndExpand" WidthRequest="{Binding CenterHoleSize}">
-                            <Label Text="Profit of"   FontSize="{OnPlatform WinUI='13',Android='10',iOS='10',MacCatalyst='13'}" 
+                            <Label Text="Profit of"   FontSize="{OnPlatform WinUI='13',Android='9',iOS='10',MacCatalyst='13'}" 
                                    VerticalTextAlignment="Center" 
                                    HorizontalOptions="Center" VerticalOptions="EndAndExpand"
                                    Margin="{OnPlatform WinUI='0',Android='5',MacCatalyst='10',iOS='5'}"/>
-                            <Label Text="Coffee bags"   FontSize="{OnPlatform WinUI='13',Android='10',iOS='10',MacCatalyst='13'}"    HorizontalOptions="Center"
+                            <Label Text="Coffee bags"   FontSize="{OnPlatform WinUI='13',Android='9',iOS='10',MacCatalyst='13'}"    HorizontalOptions="Center"
                                    VerticalOptions="StartAndExpand" Margin="0"/>
                             <Label  Text="{Binding Percentage,Source={x:Reference coffeeProduction},StringFormat='{0:P0}'}"
-                                    FontAttributes="Bold"   FontSize="{OnPlatform WinUI='15',Android='10',iOS='12',MacCatalyst='14'}"
+                                    FontAttributes="Bold"   FontSize="{OnPlatform WinUI='15',Android='9',iOS='12',MacCatalyst='14'}"
                                     HorizontalOptions="Center" VerticalOptions="StartAndExpand"
                                     Margin="{OnPlatform Android='0',iOS='0',Default='0,-20,0,0'}"/>
                         </StackLayout>
