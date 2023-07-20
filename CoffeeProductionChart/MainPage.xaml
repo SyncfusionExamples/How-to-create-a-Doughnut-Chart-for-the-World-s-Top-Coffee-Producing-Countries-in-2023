@@ -64,11 +64,11 @@
                     <chart:DoughnutSeries.CenterView>
                         <StackLayout x:Name="layout" HeightRequest="{Binding CenterHoleSize}" HorizontalOptions="Center" 
                                      VerticalOptions="CenterAndExpand" WidthRequest="{Binding CenterHoleSize}">
-                            <Label Text="Profit of"   FontSize="{OnPlatform WinUI='13',Android='9',iOS='10',MacCatalyst='13'}" 
+                            <Label Text="Percent of"   FontSize="{OnPlatform WinUI='13',Android='9',iOS='10',MacCatalyst='13'}" 
                                    VerticalTextAlignment="Center" 
                                    HorizontalOptions="Center" VerticalOptions="EndAndExpand"
                                    Margin="{OnPlatform WinUI='0',Android='5',MacCatalyst='10',iOS='5'}"/>
-                            <Label Text="Coffee bags"   FontSize="{OnPlatform WinUI='13',Android='9',iOS='10',MacCatalyst='13'}"    HorizontalOptions="Center"
+                            <Label Text="Coffee Produced"   FontSize="{OnPlatform WinUI='13',Android='9',iOS='10',MacCatalyst='13'}"    HorizontalOptions="Center"
                                    VerticalOptions="StartAndExpand" Margin="0"/>
                             <Label  Text="{Binding Percentage,Source={x:Reference coffeeProduction},StringFormat='{0:P0}'}"
                                     FontAttributes="Bold"   FontSize="{OnPlatform WinUI='15',Android='9',iOS='12',MacCatalyst='14'}"
