@@ -32,7 +32,7 @@
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Margin="5,0,0,0"  VerticalOptions="Center" 
                                              HorizontalOptions="Start" Orientation="Vertical" >
-                                    <Label  Text="The World’s Top Coffee Producing Countries" FontSize="22" FontAttributes="Bold" 
+                                    <Label  Text="The World’s Top Coffee-Producing Countries" FontSize="22" FontAttributes="Bold" 
                                   TextColor="white"/>
                                 </StackLayout>
                             </Grid>

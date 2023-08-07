@@ -114,7 +114,7 @@ namespace CoffeeProductionChart
             }
         }
 
-        private double groupTo = 7;
+        private double groupTo = 8;
         public double GroupTo
         {
             get { return groupTo; }
